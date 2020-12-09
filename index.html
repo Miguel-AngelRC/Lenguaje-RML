@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Lenguaje RML</title>
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">Lenguaje RML</a></h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Sintanxis</a></li>
+            <li><a href="informacion.html">Información</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>Seleccione el archivo de texto plano: </h2>
+        <div id="contentArchivo" class="archivo">
+            <input type="file" id="archivoTexto">
+        </div>
+        <button onclick="iniciarValidacion()">Validar</button>
+        <div id="barra"><p id="mensajes"></p></div>
+        <textarea  id="consola" spellcheck="false"></textarea>
+    </section>
+    
+    <p id="contenido"> <span id="error"></span></p>
+
+
+    <script src="js/tabla.js"></script>
+    <script src="js/validaLenguaje.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+    <!-- <p id="contenido3"></p>
+
+
+    <button onclick="probar()">probar</button> -->

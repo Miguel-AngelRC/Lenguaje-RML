@@ -1,0 +1,35 @@
+#ini
+::PROGRAMA QUE SUMA DOS NUMEROS
+
+/: COMENTARIO
+MULTILINEA:/
+
+var ent variable1:entEnt#
+
+$variable1:5#
+
+var ent variable2:entEnt#
+
+si(variable1>variable2))
+   imp(|Es mayor: |:variable1)#
+   ::PROGRAMA QUE SUMA DOS NUMEROS
+sino
+   imp(|Es mayor: |:variable2)#
+
+   parar(variable1,no(no(variable1<10)),variable1:variable1+1)
+      imp(variable1)#
+      cons frac CONSTANTE1#
+
+      mientras(variable1<=CONSTANTE1)
+         &CONSTANTE1:40#
+         
+         si(variable1==10||no(variable2>=10))
+            imp(|hola|:variable2:|Mundo|)#
+         finSi
+      finMientras
+      
+      /: COMENTARIO
+         MULTILINEA:/
+   finParar
+finSi
+#fin
