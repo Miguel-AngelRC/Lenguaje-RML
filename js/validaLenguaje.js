@@ -34,7 +34,7 @@ function mensajes_Interfaz (msj,tipo){
             resultado.style.display="block";
             resultado.innerHTML=msj[0];
             resultado.style.background="#ff414d";
-            resultado.style.color="while"
+            resultado.style.color="white"
             consola.style.display="inline-block";
             consola.value=msj[1];
         break;
@@ -77,8 +77,9 @@ function iniciarValidacion(){//secuencia de validación de programa
         mensajes_Interfaz("Suba un archivo por favor.",2);
     else{
         contenido = formatearContenido();
-        let resul = valida(contenido)
+        let resul = valida(contenido);
 
+       // alert(resul);
         if  (resul[0])
             mensajes_Interfaz(["!El programa es válido¡",resul[1]],3);
         else
@@ -122,13 +123,13 @@ function valida (contenido){
         estado = tabla[estado][caracter];
         
         consol +="   Siguiente Estado: "+estado+" \n";
-        
-        if (estado=="q202")
+        if (estado=="q202" || (index==contenido.length-1 && estado!="q201"))
             return [false,consol];
 
         if (index == contenido.length-1 && estado =="q201")
             return [true,consol];
     }
+    return false;
 }
 
 function error (index){
