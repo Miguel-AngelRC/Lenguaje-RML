@@ -96,6 +96,7 @@ function formatearContenido (){
         cont+=lines[i].trim();//limpia las sangrias y saltos de linea
 
     let aux="";
+    
     for (let index = 0; index < cont.length; index++) { // ciclo para eliminar espacios extras en el contenido
 
         if (cont.charAt(index)==" " && cont.charAt(index+1)==" "){
@@ -104,7 +105,7 @@ function formatearContenido (){
         }
         aux += cont.charAt(index);
     }
-    return aux;
+    return cont;
 }
 
 
@@ -114,29 +115,25 @@ function valida (contenido){
     let estado="q0";
     let consol="";
 
-    for (let index = 0; index < contenido.length; index++) {
-        consol += "Estado: "+estado+"   carácter: "+caracter;
+    for (let i=0; i < contenido.length; i++) {
+        consol += "Estado: "+estado;
 
-        index = index==75?76:index;
-        caracter = contenido.charAt(index);
+        caracter = contenido.charAt(i);
         caracter= caracter==" "?"esp":caracter;
-        estado = tabla[estado][caracter];
         
-        consol +="   Siguiente Estado: "+estado+" \n";
-        if (estado=="q202" || (index==contenido.length-1 && estado!="q201"))
+        try{
+            estado = tabla[estado][caracter];
+        }catch(e){
+            estado ="q202";
+        }
+
+        consol +="   carácter: "+caracter+"   Siguiente Estado: "+estado+" \n";
+        if (estado=="q202" || (i==contenido.length-1 && estado!="q201"))
             return [false,consol];
 
-        if (index == contenido.length-1 && estado =="q201")
+        if (i == contenido.length-1 && estado =="q201")
             return [true,consol];
     }
     return false;
 }
 
-function error (index){
-    let cadError = "";
-    while (contenido.charAt(index)!=" "){
-        cadError += contenido.charAt(index);
-        index++;
-    }
-    return cadError;
-}
